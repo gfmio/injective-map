@@ -1,0 +1,31 @@
+{
+  "name": "injective-map",
+  "version": "1.0.0",
+  "description": "A one-to-one map with unique keys and values",
+  "main": "dist/injective-map.js",
+  "module": "dist/injective-map.mjs",
+  "types": "dist/injective-map.d.ts",
+  "repository": "https://github.com/gfmio/injective-map",
+  "author": {
+    "email": "npm@gfm.io",
+    "name": "Frédérique Mittelstaedt",
+    "url": "https://www.gfm.io"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build:bundle": "ts-pkg bundle --cjs --es --dts",
+    "build:copy": "mkdir -p dist && cp README.md LICENSE dist",
+    "build:package-json": "ts-pkg create-package-json --public",
+    "build": "concurrently \"npm:build:bundle\" \"npm:build:copy\" \"npm:build:package-json\"",
+    "clean:dist": "rimraf dist",
+    "clean": "concurrently \"npm:clean:dist\"",
+    "release": "cd ./dist && yarn publish"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "rimraf": "^3.0.2",
+    "ts-pkg-scripts": "^0.2.2",
+    "typescript": "^4.7.2"
+  }
+}
